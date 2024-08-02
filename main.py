@@ -1,8 +1,9 @@
 from turtle import Screen
 from snake import Snake
 import time
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT, COLLIDING_DISTANCE
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, FOOD_COLLIDING_DISTANCE
 from food import Food
+from scoreboard import ScoreBoard
 
 is_race_on = False
 screen = Screen()
@@ -13,6 +14,7 @@ screen.tracer(0)
 
 snake = Snake()
 food = Food()
+score_board = ScoreBoard()
 
 screen.listen()
 screen.onkey(key="Up", fun=snake.up)
@@ -29,7 +31,11 @@ while not is_game_over:
     snake.move()
 
     # Detect collision with food
-    if snake.head.distance(food) < COLLIDING_DISTANCE:
+    if snake.head.distance(food) < FOOD_COLLIDING_DISTANCE:
         food.refresh()
+        score_board.increase_score()
+
+    # Detect Collision with the wall
+
 
 screen.exitonclick()
