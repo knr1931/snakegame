@@ -1,15 +1,13 @@
 from turtle import Turtle, Screen
 from snake import Snake
 import time
-
-screen_width = 800
-screen_height = 600
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
 is_race_on = False
 screen = Screen()
 screen.bgcolor("black")
 screen.title("Snake Game")
-screen.setup(width=screen_width, height=screen_height)
+screen.setup(width=SCREEN_WIDTH, height=SCREEN_HEIGHT)
 screen.tracer(0)
 
 snake = Snake()
