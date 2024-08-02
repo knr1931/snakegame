@@ -1,7 +1,7 @@
 from turtle import Screen
 from snake import Snake
 import time
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, COLLIDING_DISTANCE
 from food import Food
 
 is_race_on = False
@@ -27,5 +27,9 @@ while not is_game_over:
     time.sleep(.1)
 
     snake.move()
+
+    # Detect collision with food
+    if snake.head.distance(food) < COLLIDING_DISTANCE:
+        food.refresh()
 
 screen.exitonclick()
