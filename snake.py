@@ -10,20 +10,27 @@ from constants import (
 class Snake(Turtle):
     def __init__(self):
         super().__init__()
-        self.snake_segments = []
+        self.segments = []
         self.create_snake()
-        self.head = self.snake_segments[0]
+        self.head = self.segments[0]
 
     def create_snake(self):
         for i in range(INITIAL_SNAKE_SEGMENTS_NUM):
-            snake_segment = Turtle("square")
-            snake_segment.penup()
-            snake_segment.fillcolor("white")
-            snake_segment.goto(x=-i * SNAKE_SQUARE_SEGMENT_SIZE, y=0)
-            self.snake_segments.append(snake_segment)
+            position = (-i * SNAKE_SQUARE_SEGMENT_SIZE, 0)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        segment = Turtle("square")
+        segment.penup()
+        segment.fillcolor("white")
+        segment.goto(position)
+        self.segments.append(segment)
+
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
-        segments = self.snake_segments
+        segments = self.segments
         for seg_num in range(len(segments) - 1, 0, -1):
             segment = segments[seg_num]
             new_x = segments[seg_num - 1].xcor()
