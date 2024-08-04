@@ -1,5 +1,5 @@
 from turtle import Turtle
-from constants import SCREEN_HEIGHT, SCOREBOARD_CENTER_ALIGN, SCOREBOARD_FONT
+from constants import SCORE_BOARD_Y_COR, SCOREBOARD_CENTER_ALIGN, SCOREBOARD_FONT
 
 
 class ScoreBoard(Turtle):
@@ -10,7 +10,7 @@ class ScoreBoard(Turtle):
         self.color("white")
         self.hideturtle()
         self.penup()
-        self.sety(0.45 * SCREEN_HEIGHT)
+        self.sety(SCORE_BOARD_Y_COR)
         self.update_scoreboard()
 
     def update_scoreboard(self):
